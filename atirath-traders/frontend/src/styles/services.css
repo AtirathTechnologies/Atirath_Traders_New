@@ -36,9 +36,9 @@
   background-color: white;
   border-bottom: 1px solid var(--border-light);
   position: sticky;
-  top: 75px; /* Sits below standard header */
+  top: 105px; /* Sits exactly below standard header (72px + 33px) */
   z-index: 90;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
 }
 
 .services-tabs-wrapper {

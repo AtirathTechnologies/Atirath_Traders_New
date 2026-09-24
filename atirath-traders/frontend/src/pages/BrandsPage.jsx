@@ -14,6 +14,7 @@ const BrandsPage = () => {
   const [openBrandsMenu, setOpenBrandsMenu] = useState(true);
   const [openCategoriesMenu, setOpenCategoriesMenu] = useState(true);
   const [showAllBrands, setShowAllBrands] = useState(false); // toggle for sidebar brands
+  const [sortOrder, setSortOrder] = useState("Newest First");
 
   // Filter states (price, origin, MOQ)
   const [maxPriceFilter, setMaxPriceFilter] = useState(100);
@@ -102,6 +103,12 @@ const BrandsPage = () => {
         const moqVal = parseFloat(String(p.moq).replace(/[^0-9.]/g, '')) || 0;
         return moqVal <= appliedMoq;
       });
+    }
+
+    if (sortOrder === "Price Low to High") {
+      filtered.sort((a, b) => parseProductPrice(a.priceDisplay) - parseProductPrice(b.priceDisplay));
+    } else if (sortOrder === "Price High to Low") {
+      filtered.sort((a, b) => parseProductPrice(b.priceDisplay) - parseProductPrice(a.priceDisplay));
     }
 
     return filtered;
@@ -235,15 +242,11 @@ const BrandsPage = () => {
           <div className="header-right">
             <div className="sort-box">
               <span>Sort By:</span>
-              <select>
+              <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
                 <option>Newest First</option>
                 <option>Price Low to High</option>
                 <option>Price High to Low</option>
               </select>
-            </div>
-            <div className="view-icons">
-              <button><i className="fas fa-th"></i></button>
-              <button><i className="fas fa-bars"></i></button>
             </div>
           </div>
         </div>

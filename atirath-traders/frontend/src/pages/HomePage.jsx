@@ -490,16 +490,30 @@ const HomePage = () => {
             <div className="rss-track">
               <div className="rss-group">
                 {rssFeeds.map((item, index) => (
-                  <div className="rss-card" key={`first-${index}`}>
+                  <a 
+                    href={item.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="rss-card" 
+                    style={{ textDecoration: 'none', color: 'inherit' }} 
+                    key={`first-${index}`}
+                  >
                     📰 {item.title}
-                  </div>
+                  </a>
                 ))}
               </div>
               <div className="rss-group">
                 {rssFeeds.map((item, index) => (
-                  <div className="rss-card" key={`second-${index}`}>
+                  <a 
+                    href={item.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="rss-card" 
+                    style={{ textDecoration: 'none', color: 'inherit' }} 
+                    key={`second-${index}`}
+                  >
                     📰 {item.title}
-                  </div>
+                  </a>
                 ))}
               </div>
             </div>

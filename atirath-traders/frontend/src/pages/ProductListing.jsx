@@ -24,6 +24,7 @@ const ProductListing = () => {
   const [activeSubcategory, setActiveSubcategory] = useState(null);
   const [activeType, setActiveType] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState("Newest First");
 
   // Price Range, MOQ & Origin Filter states
   const [maxPriceFilter, setMaxPriceFilter] = useState(100);
@@ -237,9 +238,16 @@ const ProductListing = () => {
       return { products: [], message: msg, loading: false };
     }
 
-    if (!activeCategory && !searchQuery.trim()) {
+    if (!activeCategory && !searchQuery.trim() && sortOrder === "Newest First") {
       filtered = shuffleArray(filtered);
     }
+
+    if (sortOrder === "Price Low to High") {
+      filtered.sort((a, b) => parseProductPrice(a.priceDisplay) - parseProductPrice(b.priceDisplay));
+    } else if (sortOrder === "Price High to Low") {
+      filtered.sort((a, b) => parseProductPrice(b.priceDisplay) - parseProductPrice(a.priceDisplay));
+    }
+
     return { products: filtered, message: null, loading: false };
   };
 
@@ -273,15 +281,11 @@ const ProductListing = () => {
           <div className="header-right">
             <div className="sort-box">
               <span>Sort By:</span>
-              <select>
+              <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
                 <option>Newest First</option>
                 <option>Price Low to High</option>
                 <option>Price High to Low</option>
               </select>
-            </div>
-            <div className="view-icons">
-              <button><i className="fas fa-th"></i></button>
-              <button><i className="fas fa-bars"></i></button>
             </div>
           </div>
         </div>

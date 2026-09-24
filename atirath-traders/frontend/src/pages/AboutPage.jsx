@@ -46,39 +46,18 @@ const AboutPage = () => {
 
         {/* Three leadership cards directly below the profile grid – name & designation only */}
         <div className="container team-cards-wrapper">
-          <div className="team-cards">
-            {/* CEO Card */}
-            <div className="team-card">
+          <div className="team-cards" style={{ display: 'flex', justifyContent: 'center' }}>
+            {/* Chairman Card */}
+            <div className="team-card" style={{ maxWidth: '350px', width: '100%' }}>
               <div className="team-image">
                 <img 
-                  src="./Director.webp" 
-                  alt="Mr. G. Chandar, CEO" 
+                  src="./chairman.jpeg" 
+                  alt="Ch.v.k.sai kumar, Chairman"
+                  onError={(e) => { e.target.src = '/placeholder.jpg'; }}
                 />
               </div>
-              <h3>Mr. G. Chandar</h3>
-              <div className="team-title">Chief Executive Officer</div>
-            </div>
-            {/* Executive Director Card */}
-            <div className="team-card">
-              <div className="team-image">
-                <img 
-                  src="./faiz.webp" 
-                  alt="Mr. Md. Faiz, Executive Director" 
-                />
-              </div>
-              <h3>Mr. Md. Faiz</h3>
-              <div className="team-title">Executive Director</div>
-            </div>
-            {/* Regional Director Card */}
-            <div className="team-card">
-              <div className="team-image">
-                <img 
-                  src="./tripti.webp" 
-                  alt="Ms. Tripti Gaur, Regional Director" 
-                />
-              </div>
-              <h3>Ms. Tripti Gaur</h3>
-              <div className="team-title">Regional Director (Australia/Europe)</div>
+              <h3>Ch.v.k.sai kumar</h3>
+              <div className="team-title">Chairman</div>
             </div>
           </div>
         </div>
